@@ -1,0 +1,12 @@
+{
+  "name": "gitzin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "boyloy.js",
+  "scripts": {
+    "start": "node boyloy.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
