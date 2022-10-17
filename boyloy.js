@@ -2816,3 +2816,37 @@
 // }
 
 // main();
+
+// CIL challenge Metamask
+
+import { ethers } from "ethers";
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+const provider = new ethers.providers.JsonRpcProvider(process.env.RPC, "goerli")
+console.log(provider);
+const address = '0x698013BbA6BD97393b2291910b41Ac24736A2F0B'
+
+// const account1 = '0xea16f22afb429e85b05080d19e097d174853f026' // sender
+const account2 = '0x69709e84f9a6b925bfafacd458d27cb4fbaeff36' //recipient
+// const privatekey1 = 'process.env.privatekey' //sender private key
+
+
+const main = async () => {
+    const balance = await provider.getBalance(address)
+    console.log(`\nETH balance of ${address} --> ${ethers.utils.formatEther(balance)} ETH\n`)
+
+    if (!process.env.PRIVATE_KEY) throw Error("NO PRIVATE_KEY!");
+    const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider)
+    // const senderBalanceBefore = await pro
+
+    const tx = wallet.sendTransaction({
+        to: account2,
+        value: ethers.utils.parseEther("0.0025")
+    })
+    // await tx.wait()
+    // console.log(tx);
+}
+
+main()
+
